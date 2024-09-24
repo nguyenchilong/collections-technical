@@ -5,7 +5,8 @@
 - Gender:	Male 
 - [LinkedIn Profile](https://www.linkedin.com/in/longnc/)
 - Email: Long Nguyen <nguyenchilong90@gmail.com> 
-- Cell Phone:	(+84) 076 899 4959
+- Cell Phone(Viber/WhatsApp/Telegram):	(+84) 076 899 4959
+- Skype: nguyenchilongphp
 
 ## EXPERIENCE
 - 1+ year Golang
