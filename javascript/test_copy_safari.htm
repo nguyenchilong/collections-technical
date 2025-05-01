@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function copyClipboard() {
+        const text = new ClipboardItem({
+          "text/plain": fetch('https://fakestoreapi.com/products/1')
+            .then(response => response.json())
+            .then(text => new Blob([JSON.stringify(text)], { type: "text/plain" }))
+        })
+        navigator.clipboard.write([text])
+      }
+    </script>
+  </head>
+  <body>
+    test copy on safari
+    <button onclick="copyClipboard();">Copy</button>
+  </body>
+</html>

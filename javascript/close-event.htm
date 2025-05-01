@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        How to detect browser or tab closing
+    </title>
+</head>
+
+<body>
+
+    
+    <!-- <iframe width="100%" height="600" frameBorder="0" src="https://docs.google.com/gview?url=https://cdndev.themartec.com/assets/bbfe02cf-7d1c-41fe-a774-b0f33ee08b3c/generation/84f8c629-af05-43e7-b3f3-187887c2713f/how-women-mentors-make-a-difference-in-engineering-1699521013169.docx&embedded=true"></iframe> -->
+
+    <h1 style="color: green">
+        GeeksforGeeks
+    </h1>
+
+    <b>Detect browser or tab closing</b>
+
+    <p>
+        The beforeunload function is triggered
+        just before the browser or tab is to be
+        closed or the page is to be reloaded.
+        Modern browsers require some interaction
+        with the page, otherwise the dialog box
+        is not shown.
+    </p>
+
+    <form>
+        <textarea placeholder="Trigger an interaction by writing something here"></textarea>
+    </form> 
+
+    <script type="text/javascript">
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            alert('are you sure close this page?');
+            e.returnValue = '';
+        });
+
+        // if (navigator.clipboard) {
+        //     const type = 'text/html';
+        //     const blob1 = new Blob(['text to write to <p>clipboard</p>'], { type });
+        //     const item1 = new ClipboardItem({ [type]: blob1 });
+        //     console.log({item1});
+        //     console.log('Clipboard API available');
+        // } else {
+        //     console.log('Clipboard API not available');
+        // }
+
+        // if (navigator.clipboard.writeText) {
+        //     const type = 'text/plain';
+        //     const blob1 = new Blob(['text to write to clipboard'], { type });
+        //     const item1 = new ClipboardItem({ [type]: blob1 });
+        //     console.log({item1});
+        //     console.log('Can copy text to clipboard');
+        // } else {
+        //     console.log('Can not copy text to clipboard');
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+swagger: "2.0"
+info:
+  title: Chat Room
+  version: v1
+tags:
+  - name: AuthService
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /auth/v1/register:
+    post:
+      summary: "Regiser: create a user"
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: "#/definitions/JsonSuccessResponse"
+        "400":
+          description: A Bad Request.
+          schema:
+            $ref: "#/definitions/JsonResponseBadRequest"
+        "500":
+          description: Internal Error.
+          schema:
+            $ref: "#/definitions/JsonResponseInternalError"
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/RegisterRequest"
+      tags:
+        - AuthService
+  /auth/v1/login:
+    post:
+      summary: "Login: get a jwt"
+      responses:
+        "200":
+          description: A successful response.
+          schema:
+            $ref: "#/definitions/JsonSuccessResponseWithToken"
+        "400":
+          description: A Bad Request.
+          schema:
+            $ref: "#/definitions/JsonResponseBadRequest"
+        "500":
+          description: Internal Error.
+          schema:
+            $ref: "#/definitions/JsonResponseInternalError"
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/LoginRequest"
+      tags:
+        - AuthService
+definitions:
+  JsonSuccessResponseWithToken:
+    type: object
+    required:
+      - status
+      - message
+      - current_time
+    properties:
+      status:
+        type: integer
+        example: 0
+      message:
+        type: string
+        example: "Success"
+      current_time:
+        type: integer
+        format: int64
+      data:
+        type: object
+        properties:
+          token:
+            type: string
+  JsonSuccessResponse:
+    type: object
+    required:
+      - status
+      - message
+      - current_time
+    properties:
+      status:
+        type: integer
+        example: 0
+      message:
+        type: string
+        example: "Success"
+      current_time:
+        type: integer
+        format: int64
+  JsonResponseBadRequest:
+    type: object
+    required:
+      - status
+      - message
+      - current_time
+    properties:
+      status:
+        type: integer
+        example: 101
+      message:
+        type: string
+        example: "Request validation failed"
+      current_time:
+        type: integer
+        format: int64
+  JsonResponseInternalError:
+    type: object
+    required:
+      - status
+      - message
+      - current_time
+    properties:
+      status:
+        type: integer
+        example: 100
+      message:
+        type: string
+        example: "Server encounters an internal error. Try again later"
+      current_time:
+        type: integer
+        format: int64
+  RegisterRequest:
+    type: object
+    required:
+      - email
+      - username
+      - password
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+        format: email
+      password:
+        type: string
+  LoginRequest:
+    type: object
+    required:
+      - email
+      - room_id
+      - password
+    properties:
+      email:
+        type: string
+        format: email
+      room_id:
+        type: integer
+        format: int
+        minimum: 1
+        maximum: 5
+      password:
+        type: string

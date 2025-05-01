@@ -1,0 +1,7 @@
+Please create configmap Kubernetes object. Copy and paste this HTML content to a file which you can name for example: configmap_content.html
+
+
+In order to create a configmap object in Kubernetes you need to run:
+
+
+$ kubectl create configmap nginx-content --from-file=/path/to/configmap.html
